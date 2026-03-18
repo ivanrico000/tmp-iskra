@@ -1,0 +1,247 @@
+{
+  "metadata": {
+    "title": "Iskra - Advertising Agency and Influencer Marketing",
+    "description": "Iskra is an advertising agency specialized in influencer marketing, brand positioning and creative digital strategies.",
+    "ogTitle": "Iskra - Advertising Agency and Influencer Marketing",
+    "ogDescription": "Iskra is an advertising agency specialized in influencer marketing, brand positioning and creative digital strategies.",
+    "twitterTitle": "Iskra - Advertising Agency and Influencer Marketing",
+    "twitterDescription": "Iskra is an advertising agency specialized in influencer marketing, brand positioning and creative digital strategies."
+  },
+  "navbar": {
+    "home": "Home",
+    "capabilities": "Capabilities",
+    "whyChooseUs": "Why choose us?",
+    "team": "Team",
+    "ourMethod": "Our method",
+    "services": "Services",
+    "caseStudies": "Case studies",
+    "quote": "Quote",
+    "followUs": "Follow us",
+    "copyright": "© 2024 Iskra. All rights reserved."
+  },
+  "hero": {
+    "title1": "Advertising agency focused on",
+    "title2": "influence and real results",
+    "description": "Iskra is an advertising and digital marketing agency specialized in influencer marketing, brand building and strategic campaigns with creators, actors and digital talents in Colombia.",
+    "quote": "Quote",
+    "influencer": "Want to be an influencer?"
+  },
+  "footer": {
+    "followUs": "Follow us",
+    "copyright": "© 2026 Iskra. All rights reserved."
+  },
+  "strengthSection": {
+    "differential": "Iskra Differential",
+    "title": "Our true strength",
+    "subtitle": "Marketing strategies with carefully selected influencers.",
+    "card1": {
+      "title": "We don't sell influencers",
+      "description": "ISKRA designs strategies with carefully selected influencers."
+    },
+    "card2": {
+      "title": "Strategic criteria",
+      "description": "Our differential: deep analysis, ethics and long-term vision."
+    },
+    "card3": {
+      "title": "Comprehensive strategies",
+      "description": "We connect brands with influencers ethically and sustainably."
+    },
+    "pricing": {
+      "title": "Fair pricing",
+      "description": "We work with transparent rates that take care of both the brand and the creator. We want sustainable relationships where everyone wins: brands receive real value and influencers are fairly recognized for their work. No surprises or hidden costs, everything clear from the start."
+    }
+  },
+
+  "language": {
+    "switchTo": "Switch to",
+    "english": "English",
+    "spanish": "Spanish"
+  },
+  "downloadButton": {
+    "downloadPortfolio": "Download portfolio"
+  },
+  "highlightSection": {
+    "title": "Convert digital presence into real positioning",
+    "description": "ISKRA is the strategic advertising agency and influence that converts digital presence into real positioning, through campaigns with creators based on criteria, professional negotiation and impeccable execution."
+  },
+  "capacidadesSection": {
+    "title": "Our Capabilities",
+    "subtitle": "What we do for your brand",
+    "cards": [
+      {
+        "title": "Brand Strategy",
+        "description": "We develop comprehensive positioning and communication strategies that connect your brand with your target audience."
+      },
+      {
+        "title": "Influencer Marketing",
+        "description": "We create campaigns with carefully selected influencers to generate real and measurable impact on your audience."
+      },
+      {
+        "title": "Content Production",
+        "description": "We generate high-quality audiovisual and digital content adapted to the needs of each platform."
+      },
+      {
+        "title": "Relationship Management",
+        "description": "We negotiate and manage relationships with creators and talent to ensure successful collaborations."
+      }
+    ]
+  },
+  "howWeWorkSection": {
+    "title": "Our team",
+    "description": "Iskra is made up of a multidisciplinary team of professionals in strategy, creativity and campaign management. Each project is developed with specialists who are activated according to the objectives and needs of each brand.",
+    "points": [
+      "Multidisciplinary team activated according to each project",
+      "Strategic thinking before empty trends",
+      "Creativity with criteria, not improvisation"
+    ],
+    "additional": "This work model has been designed to ensure operational flexibility, efficiency in management and a high level of specialization in each phase of the projects.",
+    "supervision": "The strategic direction and direct supervision of the projects are personally assumed, with the objective of guaranteeing coherence, solidity and a constant orientation towards measurable results."
+  },
+  "stepsSection": {
+    "title": "How we work at Iskra?",
+    "subtitle": "We boost your brand step by step",
+    "steps": [
+      {
+        "title": "Diagnosis and objective definition",
+        "text": "In-depth analysis of needs, audiences and strategic opportunities."
+      },
+      {
+        "title": "Strategic design and creative concept",
+        "text": "Development of the unique narrative and value proposition for the campaign."
+      },
+      {
+        "title": "Influencer selection and curation",
+        "text": "Rigorous validation of profiles aligned with objectives and audiences."
+      },
+      {
+        "title": "Professional negotiation and contracting",
+        "text": "Expert advice on terms, scopes and contractual conditions."
+      },
+      {
+        "title": "Content production and publication",
+        "text": "Creative direction and guidelines for authentic and strategic content."
+      },
+      {
+        "title": "Impact measurement and optimization",
+        "text": "Analysis of results, actionable insights and continuous improvement."
+      },
+      {
+        "title": "Quality control and monitoring",
+        "text": "Continuous monitoring of performance and compliance with standards."
+      }
+    ]
+  },
+  "servicesPage": {
+    "title": "Services",
+    "nationalTitle": "Services",
+    "internationalTitle": "International Services",
+
+    "national": [
+      {
+        "title": "Influencer Marketing Strategy",
+        "description": "We design strategies aimed at influencers, content creators and artists, aligned with the commercial objectives of each brand, focused on impact, reach and real conversion."
+      },
+      {
+        "title": "Creative Strategy",
+        "description": "We are a company specializing in the development of creative strategies for brands, focused on designing and executing solutions that generate connection, positioning, and measurable results. We work with companies of all sizes, guiding them in defining and evolving their communication based on a deep understanding of their identity, objectives, and audience. Our approach integrates storytelling, content strategy, and creative execution, aligning every action with the brand's DNA and the dynamics of the digital ecosystem. We believe in strategically applied creativity as a driver of value, impact, and sustainable business growth."
+      },
+      {
+        "title": "Influencer Selection and Curation",
+        "description": "We analyze data, real engagement, and brand affinity to select authentic profiles that connect with the right audience and generate measurable results."
+      },
+      {
+        "title": "Support for New Influencers",
+        "description": "We guide new creators in their positioning, content, personal branding, and first collaborations so they can enter the market professionally."
+      },
+      {
+        "title": "Consulting for Junior Creators",
+        "description": "We advise on pricing, brand negotiations, organic growth, content optimization, and building a sustainable career within the digital ecosystem."
+      }
+    ],
+
+    "international": [
+      {
+        "title": "Influencer management for brands entering LATAM",
+        "description": "We support international brands in their entry into the Latin American market through influencer marketing strategies tailored to each country. We handle the strategic selection of creators, brand positioning, content development, digital activations, and full campaign execution. Our approach combines local cultural knowledge with strategic planning to ensure a genuine connection with audiences."
+      },
+      {
+        "title": "Transatlantic campaigns(Europe–Latin America)",
+        "description": "We connect international brands with content creators in Colombia and Latin America to develop campaigns with regional reach. We design the content strategy, manage negotiations, and coordinate full execution, ensuring consistency across markets. We work with carefully selected profiles that allow us to reach specific niches and growing audiences, avoiding saturation of traditional audiences."
+      },
+      {
+        "title": "Hybrid activations (Europe–Latin America)",
+        "description": "We design activations that combine in-person and digital experiences across Europe and Latin America. From brand launches to strategic events amplified by content creators in both markets, we structure campaigns that integrate experience, visibility, and influence. We handle planning, international coordination, and execution, ensuring strategic alignment and measurable results."
+      }
+    ]
+  },
+  "collaborationsPage": {
+    "title": "Real cases",
+    "description": "Talent and brands with which we have developed campaigns, strategies and growth processes within the digital ecosystem."
+  },
+  "capacidadesPage": {
+    "hero": {
+      "companyName": "OMNICOM",
+      "before": "The world's leading",
+      "highlight1": "marketing",
+      "middle": "and",
+      "highlight2": "sales",
+      "after": "company",
+      "tagline": "Built for intelligent growth in the next era.",
+      "description": "We help the world's leading brands solve their most critical growth challenges by giving them access to industry-leading insights, breakthrough technology, and the most creative talent in the business."
+    },
+    "connectedCapabilities": {
+      "pill": "Connected Capabilities",
+      "title": "A competitive edge across every dimension",
+      "description": "Our connected capabilities give brands a measurable advantage in the modern world of marketing and sales.",
+      "buttonText": "Connected\nCapabilities",
+      "items": [
+        "Advertising",
+        "Branding",
+        "Commerce",
+        "Experiential",
+        "Health",
+        "Media",
+        "Precision Marketing",
+        "Production",
+        "Public\nRelations"
+      ]
+    },
+    "omni": {
+      "pill": "Omni",
+      "title": "Omnicom's AI-driven marketing intelligence platform",
+      "description": "Omni unites creativity, media, data, and AI to help brands grow with greater clarity, speed, and measurable impact in the age of influence.",
+      "cards": [
+        { "title": "Central Orchestration", "body": "One unified workflow." },
+        { "title": "AI-Native Production", "body": "Content at an unmatched scale." },
+        { "title": "Predictive Intelligence", "body": "Helping you see what's next." },
+        { "title": "Intelligence-Infused Data", "body": "A single source of truth. Infinite clarity." },
+        { "title": "Outcome-Based Media Buying", "body": "ROI you can prove, not just promise." },
+        { "title": "Geo Optimization", "body": "Global scale. Local precision." }
+      ]
+    },
+    "investors": {
+      "pill": "Investors",
+      "title": "A record of sustained growth",
+      "description": "Omnicom (NYSE: OMC) sets the standard for marketing and sales leadership by consistently building stronger brands and delivering superior outcomes.",
+      "buttonText": "Investors"
+    },
+    "whatsNew": {
+      "title": "What's new across Omnicom",
+      "viewAll": "View All",
+      "articles": [
+        {
+          "date": "March 5, 2026",
+          "title": "Omnicom Production's Sergio Lopez on building a unified production engine for APAC's next phase of growth"
+        },
+        {
+          "date": "March 4, 2026",
+          "title": "Zefr and OM Media Trials Release First-of-Its-Kind Study on Brand Impact of Ad Adjacency to AI-Generated Content"
+        },
+        {
+          "date": "February 25, 2026",
+          "title": "Omnicom Prices Senior Notes Offerings"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://iskra.com.co
+
+# Sitemaps
+Sitemap: https://iskra.com.co/sitemap.xml

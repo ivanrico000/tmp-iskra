@@ -1,0 +1,247 @@
+{
+  "metadata": {
+    "title": "Iskra - Agencia de Publicidad y Marketing de Influencia",
+    "description": "Iskra es una agencia de publicidad especializada en marketing de influencia, posicionamiento de marca y estrategias digitales creativas.",
+    "ogTitle": "Iskra - Agencia de Publicidad y Marketing de Influencia",
+    "ogDescription": "Iskra es una agencia de publicidad especializada en marketing de influencia, posicionamiento de marca y estrategias digitales creativas.",
+    "twitterTitle": "Iskra - Agencia de Publicidad y Marketing de Influencia",
+    "twitterDescription": "Iskra es una agencia de publicidad especializada en marketing de influencia, posicionamiento de marca y estrategias digitales creativas."
+  },
+  "navbar": {
+    "home": "Inicio",
+    "capabilities": "Capacidades",
+    "whyChooseUs": "¿Por qué elegirnos?",
+    "team": "Equipo",
+    "ourMethod": "Nuestro método",
+    "services": "Servicios",
+    "caseStudies": "Casos reales",
+    "quote": "Cotizar",
+    "followUs": "Síguenos",
+    "copyright": "© 2024 Iskra. Todos los derechos reservados."
+  },
+  "hero": {
+    "title1": "Agencia de publicidad enfocada en",
+    "title2": "influencia y resultados reales",
+    "description": "Iskra es una agencia de publicidad y marketing digital especializada en marketing de influencia, construcción de marca y campañas estratégicas con creadores, actores y talentos digitales en Colombia.",
+    "quote": "Cotizar",
+    "influencer": "¿Quieres ser influencer?"
+  },
+  "footer": {
+    "followUs": "Síguenos",
+    "copyright": "© 2026 Iskra. Todos los derechos reservados."
+  },
+  "strengthSection": {
+    "differential": "Diferencial Iskra",
+    "title": "Nuestra verdadera fortaleza",
+    "subtitle": "Estrategias de marketing con personas influyentes seleccionadas cuidadosamente.",
+    "card1": {
+      "title": "No vendemos influencers",
+      "description": "ISKRA diseña estrategias con personas influyentes seleccionadas cuidadosamente."
+    },
+    "card2": {
+      "title": "Criterio estratégico",
+      "description": "Nuestro diferencial: análisis profundo, ética y visión de largo plazo."
+    },
+    "card3": {
+      "title": "Estrategias integrales",
+      "description": "Conectamos marcas con personas influyentes de forma ética y sostenible."
+    },
+    "pricing": {
+      "title": "Precios justos",
+      "description": "Trabajamos con tarifas transparentes que cuidan tanto a la marca como al creador. Queremos relaciones sostenibles donde todos ganen: marcas reciben valor real y los influencers son justamente reconocidos por su trabajo. Sin sorpresas ni costos ocultos, todo claro desde el inicio."
+    }
+  },
+
+  "language": {
+    "switchTo": "Cambiar a",
+    "english": "Inglés",
+    "spanish": "Español"
+  },
+  "downloadButton": {
+    "downloadPortfolio": "Descargar portafolio"
+  },
+  "highlightSection": {
+    "title": "Convertimos presencia digital en posicionamiento real",
+    "description": "ISKRA es la agencia estratégica de publicidad e influencia que convierte la presencia digital en posicionamiento real, mediante campañas con creadores basadas en criterio, negociación profesional y ejecución impecable."
+  },
+  "capacidadesSection": {
+    "title": "Nuestras Capacidades",
+    "subtitle": "Lo que hacemos por tu marca",
+    "cards": [
+      {
+        "title": "Estrategia de Marca",
+        "description": "Desarrollamos estrategias integrales de posicionamiento y comunicación que conectan tu marca con su audiencia objetivo."
+      },
+      {
+        "title": "Marketing de Influencia",
+        "description": "Creamos campañas con influencers seleccionados cuidadosamente para generar impacto real y medible en tu público."
+      },
+      {
+        "title": "Producción de Contenido",
+        "description": "Generamos contenido audiovisual y digital de alta calidad adaptado a las necesidades de cada plataforma."
+      },
+      {
+        "title": "Gestión de Relaciones",
+        "description": "Negociamos y gestionamos relaciones con creadores y talentos para asegurar colaboraciones exitosas."
+      }
+    ]
+  },
+  "howWeWorkSection": {
+    "title": "Nuestro equipo",
+    "description": "Iskra está conformada por un equipo multidisciplinario de profesionales en estrategia, creatividad y gestión de campañas. Cada proyecto se desarrolla con especialistas que se activan de acuerdo con los objetivos y necesidades de cada marca.",
+    "points": [
+      "Equipo multidisciplinario activado según cada proyecto",
+      "Pensamiento estratégico antes que tendencias vacías",
+      "Creatividad con criterio, no improvisación"
+    ],
+    "additional": "Este modelo de trabajo ha sido diseñado para asegurar flexibilidad operativa, eficiencia en la gestión y un alto nivel de especialización en cada fase de los proyectos.",
+    "supervision": "La dirección estratégica y la supervisión directa de los proyectos son asumidas personalmente, con el objetivo de garantizar coherencia, solidez estratégica y una orientación constante hacia resultados medibles."
+  },
+  "stepsSection": {
+    "title": "¿Cómo trabajamos en Iskra?",
+    "subtitle": "Impulsamos tu marca paso a paso",
+    "steps": [
+      {
+        "title": "Diagnóstico y definición de objetivos",
+        "text": "Análisis profundo de necesidades, audiencias y oportunidades estratégicas."
+      },
+      {
+        "title": "Diseño estratégico y concepto creativo",
+        "text": "Desarrollo de la narrativa y propuesta de valor única para la campaña."
+      },
+      {
+        "title": "Selección y curaduría de influencers",
+        "text": "Validación rigurosa de perfiles alineados con objetivos y audiencias."
+      },
+      {
+        "title": "Negociación y contratación profesional",
+        "text": "Asesoramiento experto en términos, alcances y condiciones contractuales."
+      },
+      {
+        "title": "Producción y publicación de contenido",
+        "text": "Dirección creativa y lineamientos para contenido auténtico y estratégico."
+      },
+      {
+        "title": "Medición de impacto y optimización",
+        "text": "Análisis de resultados, insights accionables y mejora continua."
+      },
+      {
+        "title": "Seguimiento y control de calidad",
+        "text": "Monitoreo continuo del desempeño y cumplimiento de estándares."
+      }
+    ]
+  },
+  "servicesPage": {
+    "title": "Servicios",
+    "nationalTitle": "Servicios",
+    "internationalTitle": "Servicios Internacionales",
+
+    "national": [
+      {
+        "title": "Estrategia de Influencer Marketing",
+        "description": "Diseñamos estrategias dirigidas a influencers, creadores de contenido y artistas, alineadas con los objetivos comerciales de cada marca, enfocadas en impacto, alcance y conversión real."
+      },
+      {
+        "title": "Estrategia creativa",
+        "description": "Somos una empresa especializada en el desarrollo de estrategias creativas para marcas, enfocada en diseñar y ejecutar soluciones que generen conexión, posicionamiento y resultados medibles. Trabajamos con empresas de distintos tamaños, acompañándolas en la definición y evolución de su comunicación a partir de un entendimiento profundo de su identidad, objetivos y audiencia. Nuestro enfoque integra narrativa, estrategia de contenido y ejecución creativa, alineando cada acción con el ADN de la marca y las dinámicas del ecosistema digital. Creemos en la creatividad aplicada estratégicamente como motor de valor, impacto y crecimiento sostenible para el negocio."
+      },
+      {
+        "title": "Selección y Curaduría de Influencers",
+        "description": "Analizamos data, engagement real y afinidad de marca para seleccionar perfiles auténticos que conecten con la audiencia correcta y generen resultados medibles."
+      },
+      {
+        "title": "Acompañamiento para Nuevos Influencers",
+        "description": "Guiamos a nuevos creadores en su posicionamiento, contenido, marca personal y primeras colaboraciones para que entren al mercado de forma profesional."
+      },
+      {
+        "title": "Consultoría para Creadores Junior",
+        "description": "Asesoramos en tarifas, negociación con marcas, crecimiento orgánico, optimización de contenido y construcción de una carrera sostenible dentro del ecosistema digital."
+      }
+    ],
+
+    "international": [
+      {
+        "title": "Gestión de influencers para marcas que quieren entrar a LATAM",
+        "description": "Acompañamos a marcas internacionales en su proceso de entrada al mercado latinoamericano a través de estrategias de marketing con influencers diseñadas para cada país. Nos encargamos de la selección estratégica de creadores, posicionamiento de marca, desarrollo de contenido, activaciones digitales y ejecución integral de campaña. Nuestro enfoque combina conocimiento cultural local con planificación estratégica para asegurar una conexión real con las audiencias."
+      },
+      {
+        "title": "Campañas transatlánticas (Europa – Latinoamérica)",
+        "description": "Conectamos marcas internacionales con creadores de contenido en Colombia y Latinoamérica para desarrollar campañas con alcance regional. Diseñamos la estrategia de contenido, gestionamos negociaciones y coordinamos la ejecución completa, garantizando coherencia entre mercados. Trabajamos con perfiles cuidadosamente seleccionados que permiten llegar a nichos específicos y audiencias en crecimiento, evitando la saturación de públicos tradicionales."
+      },
+      {
+        "title": "Activaciones híbridas Europa–Latinoamérica",
+        "description": "Diseñamos activaciones que combinan experiencias presenciales y digitales entre Europa y Latinoamérica. Desde lanzamientos de marca hasta eventos estratégicos amplificados por creadores de contenido en ambos mercados, estructuramos campañas que integran experiencia, visibilidad e influencia. Nos encargamos de la planificación, coordinación internacional y ejecución, asegurando alineación estratégica y resultados medibles."
+      }
+    ]
+  },
+  "collaborationsPage": {
+    "title": "Casos reales",
+    "description": "Talento y marcas con las que hemos desarrollado campañas, estrategias y procesos de crecimiento dentro del ecosistema digital."
+  },
+  "capacidadesPage": {
+    "hero": {
+      "companyName": "OMNICOM",
+      "before": "La empresa líder mundial en",
+      "highlight1": "marketing",
+      "middle": "y",
+      "highlight2": "ventas",
+      "after": "",
+      "tagline": "Diseñada para el crecimiento inteligente en la nueva era.",
+      "description": "Ayudamos a las marcas líderes del mundo a resolver sus desafíos de crecimiento más importantes, brindándoles acceso a insights de vanguardia, tecnología de punta y el talento más creativo de la industria."
+    },
+    "connectedCapabilities": {
+      "pill": "Capacidades Conectadas",
+      "title": "Una ventaja competitiva en cada dimensión",
+      "description": "Nuestras capacidades conectadas le dan a las marcas una ventaja medible en el mundo actual del marketing y las ventas.",
+      "buttonText": "Capacidades\nConectadas",
+      "items": [
+        "Publicidad",
+        "Branding",
+        "Comercio",
+        "Experiencial",
+        "Salud",
+        "Medios",
+        "Marketing\nde Precisión",
+        "Producción",
+        "Relaciones\nPúblicas"
+      ]
+    },
+    "omni": {
+      "pill": "Omni",
+      "title": "La plataforma de inteligencia de marketing impulsada por IA de Omnicom",
+      "description": "Omni integra creatividad, medios, datos e inteligencia artificial para impulsar el crecimiento de las marcas con mayor claridad, velocidad e impacto medible en la era de la influencia.",
+      "cards": [
+        { "title": "Orquestación Central", "body": "Un flujo de trabajo unificado." },
+        { "title": "Producción Nativa con IA", "body": "Contenido a una escala sin igual." },
+        { "title": "Inteligencia Predictiva", "body": "Te ayudamos a anticipar lo que viene." },
+        { "title": "Datos con Inteligencia Integrada", "body": "Una única fuente de verdad. Claridad infinita." },
+        { "title": "Compra de Medios por Resultados", "body": "ROI que puedes demostrar, no solo prometer." },
+        { "title": "Optimización Geográfica", "body": "Escala global. Precisión local." }
+      ]
+    },
+    "investors": {
+      "pill": "Inversionistas",
+      "title": "Un historial de crecimiento sostenido",
+      "description": "Omnicom (NYSE: OMC) establece el estándar en liderazgo de marketing y ventas, construyendo marcas más fuertes de manera consistente y entregando resultados superiores.",
+      "buttonText": "Inversionistas"
+    },
+    "whatsNew": {
+      "title": "Novedades en Omnicom",
+      "viewAll": "Ver todo",
+      "articles": [
+        {
+          "date": "5 de marzo de 2026",
+          "title": "Sergio Lopez de Omnicom Production habla sobre la construcción de un motor de producción unificado para la próxima fase de crecimiento en APAC"
+        },
+        {
+          "date": "4 de marzo de 2026",
+          "title": "Zefr y OM Media Trials publican un estudio pionero sobre el impacto de marca en la proximidad publicitaria con contenido generado por IA"
+        },
+        {
+          "date": "25 de febrero de 2026",
+          "title": "Omnicom fija precios en sus ofertas de notas senior"
+        }
+      ]
+    }
+  }
+}
