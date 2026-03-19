@@ -1,51 +1,54 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from "react";
 
-type AnimationPhase = 'pending' | 'video' | 'fade-out' | 'complete';
+type AnimationPhase = "pending" | "video" | "fade-out" | "complete";
 
 function IntroAnimation() {
-  const [phase, setPhase] = useState<AnimationPhase>('pending');
+  const [phase, setPhase] = useState<AnimationPhase>("pending");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (sessionStorage.getItem('introSeen')) {
-      setPhase('complete');
+    if (sessionStorage.getItem("introSeen")) {
+      setPhase("complete");
       return;
     }
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setPhase('complete');
-      sessionStorage.setItem('introSeen', '1');
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setPhase("complete");
+      sessionStorage.setItem("introSeen", "1");
       return;
     }
-    setPhase('video');
+    setPhase("video");
   }, []);
 
   useEffect(() => {
-    if (phase === 'video' && videoRef.current) {
+    if (phase === "video" && videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
   }, [phase]);
 
   const handleEnded = useCallback(() => {
-    sessionStorage.setItem('introSeen', '1');
-    setPhase('fade-out');
+    sessionStorage.setItem("introSeen", "1");
+    setPhase("fade-out");
   }, []);
 
-  const handleFadeOutEnd = useCallback((e: React.TransitionEvent<HTMLDivElement>) => {
-    if (e.target !== e.currentTarget) return;
-    if (phase === 'fade-out') setPhase('complete');
-  }, [phase]);
+  const handleFadeOutEnd = useCallback(
+    (e: React.TransitionEvent<HTMLDivElement>) => {
+      if (e.target !== e.currentTarget) return;
+      if (phase === "fade-out") setPhase("complete");
+    },
+    [phase],
+  );
 
-  if (phase === 'complete') return null;
+  if (phase === "complete") return null;
 
   return (
     <div
       aria-hidden="true"
-      onTransitionEnd={phase === 'fade-out' ? handleFadeOutEnd : undefined}
-      className={`fixed inset-0 z-9999 bg-black flex items-center justify-center ${phase === 'fade-out' ? 'transition-transform duration-700 ease-in-out -translate-y-full' : ''}`}
+      onTransitionEnd={phase === "fade-out" ? handleFadeOutEnd : undefined}
+      className={`fixed inset-0 z-9999 bg-black flex items-center justify-center ${phase === "fade-out" ? "transition-transform duration-700 ease-in-out -translate-y-full" : ""}`}
     >
-      {phase !== 'pending' && (
+      {phase !== "pending" && (
         <video
           ref={videoRef}
           muted
@@ -54,33 +57,39 @@ function IntroAnimation() {
           onEnded={handleEnded}
           className="absolute w-full h-full object-cover"
         >
-        <source src="/videos/logo.webm" type="video/webm" />
-      </video>
+          <source src="/videos/logo.webm" type="video/webm" />
+        </video>
       )}
     </div>
   );
 }
 
 const OMNI_ICONS = [
-  'https://www.omc.com/wp-content/uploads/2025/12/Agent-Orchestration-icon.svg',
-  'https://www.omc.com/wp-content/uploads/2025/12/AI-Powered-Content-Creation-icon.svg',
-  'https://www.omc.com/wp-content/uploads/2025/12/Predictive-Intelligence-icon.svg',
-  'https://www.omc.com/wp-content/uploads/2025/12/Intelligence-Infused-Data-icon.svg',
-  'https://www.omc.com/wp-content/uploads/2025/12/Outcome-Based-Media-Buying-icon.svg',
-  'https://www.omc.com/wp-content/uploads/2025/12/Geo-Optimization-icon.svg',
+  "https://www.omc.com/wp-content/uploads/2025/12/Agent-Orchestration-icon.svg",
+  "https://www.omc.com/wp-content/uploads/2025/12/AI-Powered-Content-Creation-icon.svg",
+  "https://www.omc.com/wp-content/uploads/2025/12/Predictive-Intelligence-icon.svg",
+  "https://www.omc.com/wp-content/uploads/2025/12/Intelligence-Infused-Data-icon.svg",
+  "https://www.omc.com/wp-content/uploads/2025/12/Outcome-Based-Media-Buying-icon.svg",
+  "https://www.omc.com/wp-content/uploads/2025/12/Geo-Optimization-icon.svg",
 ];
 
-import { motion, AnimatePresence } from 'framer-motion';
-import dynamic from 'next/dynamic';
-import { useTranslations } from 'next-intl';
-import topSectionAnimation from '../../../public/animaciones/initial.json';
-import orangeCircleLottie from '../../../public/animaciones/circle.json';
-import investorsLottie from '../../../public/animaciones/investors.json';
+import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
+import topSectionAnimation from "../../../public/animaciones/initial.json";
+import orangeCircleLottie from "../../../public/animaciones/circle.json";
+import investorsLottie from "../../../public/animaciones/investors.json";
 
 // Lottie necesita cargarse dinámicamente en Next.js para evitar errores de Client-Side mismatch o problemas con el objeto window
-const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
-function OrbitAnimation({ items, isMobile }: { items: string[]; isMobile: boolean }) {
+function OrbitAnimation({
+  items,
+  isMobile,
+}: {
+  items: string[];
+  isMobile: boolean;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const lottieRef = useRef<any>(null);
@@ -194,7 +203,8 @@ function OrbitAnimation({ items, isMobile }: { items: string[]; isMobile: boolea
 
           itemEl.style.transform = `rotate(${-rotationAngle}deg)`;
           itemEl.style.opacity = textOpacity.toString();
-          itemEl.style.filter = blurAmount > 0 ? `blur(${blurAmount}px)` : 'none';
+          itemEl.style.filter =
+            blurAmount > 0 ? `blur(${blurAmount}px)` : "none";
         }
       });
 
@@ -234,12 +244,12 @@ function OrbitAnimation({ items, isMobile }: { items: string[]; isMobile: boolea
                 }}
               >
                 <a
-                  href={`#${item.replace(/\s+/g, '-').toLowerCase()}`}
+                  href={`#${item.replace(/\s+/g, "-").toLowerCase()}`}
                   className="group/circle relative flex items-center justify-center rounded-full font-light font-['Cormorant_Garamond',serif] italic text-black transition-all duration-300 decoration-none cursor-pointer text-center leading-none"
                   style={{
-                    width: 'var(--orbit-circle-size)',
-                    height: 'var(--orbit-circle-size)',
-                    fontSize: 'var(--orbit-font-size)',
+                    width: "var(--orbit-circle-size)",
+                    height: "var(--orbit-circle-size)",
+                    fontSize: "var(--orbit-font-size)",
                   }}
                 >
                   {/* Borde dinámico de media luna animado por JS */}
@@ -249,15 +259,19 @@ function OrbitAnimation({ items, isMobile }: { items: string[]; isMobile: boolea
                     }}
                     className="absolute inset-0 rounded-full border-2 border-transparent border-r-[rgba(100,100,100,0.8)] group-hover/circle:opacity-0 pointer-events-none"
                     style={{
-                      borderRightWidth: '2.5px',
-                      WebkitMaskImage: 'linear-gradient(to bottom, transparent 10%, black 40%, black 60%, transparent 90%)',
-                      maskImage: 'linear-gradient(to bottom, transparent 10%, black 40%, black 60%, transparent 90%)'
+                      borderRightWidth: "2.5px",
+                      WebkitMaskImage:
+                        "linear-gradient(to bottom, transparent 10%, black 40%, black 60%, transparent 90%)",
+                      maskImage:
+                        "linear-gradient(to bottom, transparent 10%, black 40%, black 60%, transparent 90%)",
                     }}
                   ></div>
 
                   {/* Borde dinámico de media luna animado por JS */}
 
-                  <span className="relative z-10 w-full px-4 whitespace-pre-line">{item}</span>
+                  <span className="relative z-10 w-full px-4 whitespace-pre-line">
+                    {item}
+                  </span>
                 </a>
               </div>
             </div>
@@ -272,19 +286,18 @@ function OrbitAnimation({ items, isMobile }: { items: string[]; isMobile: boolea
           transform: isMobile
             ? `translate(0, calc(-1 * var(--orbit-radius))) translate(-50%, -50%) scale(var(--orbit-lottie-scale, 1.3))`
             : `translate(var(--orbit-radius)) translate(-50%, -50%) scale(var(--orbit-lottie-scale, 1.3))`,
-          width: 'var(--orbit-circle-size)',
-          height: 'var(--orbit-circle-size)',
-          filter: 'none'
+          width: "var(--orbit-circle-size)",
+          height: "var(--orbit-circle-size)",
+          filter: "none",
         }}
       >
         <Lottie
           lottieRef={lottieRef}
           animationData={orangeCircleLottie}
           loop={true}
-          style={{ width: '100%', height: '100%', filter: 'none' }} // opcional pero útil
+          style={{ width: "100%", height: "100%", filter: "none" }} // opcional pero útil
         />
       </div>
-
     </div>
   );
 }
@@ -293,12 +306,15 @@ function OmniCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("capacidadesPage");
-  const translatedCards = t.raw("omni.cards") as { title: string; body: string }[];
+  const translatedCards = t.raw("omni.cards") as {
+    title: string;
+    body: string;
+  }[];
 
   const cards = [
-    { type: 'image' as const, title: '', body: '', icon: '' },
+    { type: "image" as const, title: "", body: "", icon: "" },
     ...translatedCards.map((card, i) => ({
-      type: 'dark' as const,
+      type: "dark" as const,
       title: card.title,
       body: card.body,
       icon: OMNI_ICONS[i],
@@ -310,7 +326,7 @@ function OmniCarousel() {
     if (!el) return;
     const child = el.children[index] as HTMLElement | undefined;
     if (!child) return;
-    el.scrollTo({ left: child.offsetLeft - el.offsetLeft, behavior: 'smooth' });
+    el.scrollTo({ left: child.offsetLeft - el.offsetLeft, behavior: "smooth" });
     setActiveIndex(index);
   }, []);
 
@@ -339,18 +355,18 @@ function OmniCarousel() {
         ref={scrollRef}
         data-omni-scroll
         className="flex gap-6 overflow-x-auto snap-x snap-mandatory"
-        style={{ scrollbarWidth: 'none' }}
+        style={{ scrollbarWidth: "none" }}
         onScroll={handleScroll}
       >
         {cards.map((card) =>
-          card.type === 'image' ? (
+          card.type === "image" ? (
             <div
               key="omni-image"
               className="snap-center shrink-0 rounded-2xl overflow-hidden flex items-center justify-center"
               style={{
-                width: 'clamp(320px, 19vw, 420px)',
-                height: 'clamp(380px, 44vh, 550px)',
-                backgroundColor: '#9333EA',
+                width: "clamp(320px, 19vw, 420px)",
+                height: "clamp(380px, 44vh, 550px)",
+                backgroundColor: "#9333EA",
               }}
             >
               <img
@@ -364,19 +380,27 @@ function OmniCarousel() {
               key={card.title}
               className="snap-start flex-shrink-0 rounded-2xl bg-black p-9 flex flex-col justify-between"
               style={{
-                width: 'clamp(320px, 19vw, 420px)',
-                height: 'clamp(380px, 44vh, 550px)',
+                width: "clamp(320px, 19vw, 420px)",
+                height: "clamp(380px, 44vh, 550px)",
               }}
             >
               <div className="flex flex-col h-full">
-                <strong className="omni-card-heading font-extrabold tracking-[clamp(-1.32px,-0.11vw,-1.835px)] text-2xl font-sans  text-white">{card.title}</strong>
+                <strong className="omni-card-heading font-extrabold tracking-[clamp(-1.32px,-0.11vw,-1.835px)] text-2xl font-sans  text-white">
+                  {card.title}
+                </strong>
                 <div className="w-40 m-auto">
-                  <img src={card.icon!} alt={`${card.title} icon`} className="w-full h-full object-contain brightness-0 invert" />
+                  <img
+                    src={card.icon!}
+                    alt={`${card.title} icon`}
+                    className="w-full h-full object-contain brightness-0 invert"
+                  />
                 </div>
               </div>
-              <p className="omni-card-body font-['Cormorant_Garamond',serif] italic font-light leading-tight text-white text-xl">{card.body}</p>
+              <p className="omni-card-body font-['Cormorant_Garamond',serif] italic font-light leading-tight text-white text-xl">
+                {card.body}
+              </p>
             </div>
-          )
+          ),
         )}
       </div>
 
@@ -389,22 +413,74 @@ function OmniCarousel() {
             className="cursor-pointer bg-transparent border-none p-0 rotate-180 transition-opacity hover:opacity-60"
             aria-label="Previous"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <rect x="31.8198" width="45" height="45" rx="22.5" transform="rotate(45 31.8198 0)" fill="white" />
-              <path d="M24.1219 32.3334H40.545" stroke="black" strokeWidth="2.17742" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M32.3335 24.1218L40.545 32.3334L32.3335 40.545" stroke="black" strokeWidth="2.17742" strokeLinecap="round" strokeLinejoin="round" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+              fill="none"
+            >
+              <rect
+                x="31.8198"
+                width="45"
+                height="45"
+                rx="22.5"
+                transform="rotate(45 31.8198 0)"
+                fill="white"
+              />
+              <path
+                d="M24.1219 32.3334H40.545"
+                stroke="black"
+                strokeWidth="2.17742"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M32.3335 24.1218L40.545 32.3334L32.3335 40.545"
+                stroke="black"
+                strokeWidth="2.17742"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
           {/* Next Arrow */}
           <button
-            onClick={() => scrollToIndex(Math.min(cards.length - 1, activeIndex + 1))}
+            onClick={() =>
+              scrollToIndex(Math.min(cards.length - 1, activeIndex + 1))
+            }
             className="cursor-pointer bg-transparent border-none p-0 transition-opacity hover:opacity-60"
             aria-label="Next"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <rect x="31.8198" width="45" height="45" rx="22.5" transform="rotate(45 31.8198 0)" fill="white" />
-              <path d="M24.1219 32.3334H40.545" stroke="black" strokeWidth="2.17742" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M32.3335 24.1218L40.545 32.3334L32.3335 40.545" stroke="black" strokeWidth="2.17742" strokeLinecap="round" strokeLinejoin="round" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+              fill="none"
+            >
+              <rect
+                x="31.8198"
+                width="45"
+                height="45"
+                rx="22.5"
+                transform="rotate(45 31.8198 0)"
+                fill="white"
+              />
+              <path
+                d="M24.1219 32.3334H40.545"
+                stroke="black"
+                strokeWidth="2.17742"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M32.3335 24.1218L40.545 32.3334L32.3335 40.545"
+                stroke="black"
+                strokeWidth="2.17742"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         </div>
@@ -417,8 +493,8 @@ function OmniCarousel() {
               onClick={() => scrollToIndex(i)}
               initial={false}
               animate={{
-                width: i === activeIndex ? '2.1875rem' : '0.4375rem',
-                backgroundColor: i === activeIndex ? '#ffffff' : '#1b1b1b',
+                width: i === activeIndex ? "2.1875rem" : "0.4375rem",
+                backgroundColor: i === activeIndex ? "#ffffff" : "#1b1b1b",
               }}
               transition={{
                 width: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
@@ -438,14 +514,17 @@ function NewsCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("capacidadesPage");
-  const articles = t.raw("whatsNew.articles") as { date: string; title: string }[];
+  const articles = t.raw("whatsNew.articles") as {
+    date: string;
+    title: string;
+  }[];
 
   const scrollToIndex = useCallback((index: number) => {
     const el = scrollRef.current;
     if (!el) return;
     const child = el.children[index] as HTMLElement | undefined;
     if (!child) return;
-    el.scrollTo({ left: child.offsetLeft - el.offsetLeft, behavior: 'smooth' });
+    el.scrollTo({ left: child.offsetLeft - el.offsetLeft, behavior: "smooth" });
     setActiveIndex(index);
   }, []);
 
@@ -496,7 +575,7 @@ function NewsCarousel() {
         ref={scrollRef}
         data-news-scroll
         className="flex gap-6 overflow-x-auto snap-x snap-mandatory news-carousel-container 2xl:justify-center"
-        style={{ scrollbarWidth: 'none' }}
+        style={{ scrollbarWidth: "none" }}
         onScroll={handleScroll}
       >
         {articles.map((article) => (
@@ -505,24 +584,24 @@ function NewsCarousel() {
             href="#"
             className="snap-start shrink-0 group block bg-white rounded-2xl overflow-hidden no-underline text-black relative news-carousel-card"
             style={{
-              paddingTop: 'clamp(40px, 3.5vw, 50px)',
-              paddingLeft: 'clamp(25px, 2.5vw, 35px)',
-              paddingRight: 'clamp(25px, 2.5vw, 35px)',
-              paddingBottom: 'clamp(60px, 4.5vw, 85px)',
-              minHeight: '300px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between'
+              paddingTop: "clamp(40px, 3.5vw, 50px)",
+              paddingLeft: "clamp(25px, 2.5vw, 35px)",
+              paddingRight: "clamp(25px, 2.5vw, 35px)",
+              paddingBottom: "clamp(60px, 4.5vw, 85px)",
+              minHeight: "300px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             }}
           >
             <h4
               className="m-0"
               style={{
                 fontFamily: "'Instrument Sans', sans-serif",
-                fontSize: 'clamp(16px, 1vw, 21px)',
+                fontSize: "clamp(16px, 1vw, 21px)",
                 fontWeight: 600,
-                lineHeight: '1.3',
-                color: '#000',
+                lineHeight: "1.3",
+                color: "#000",
               }}
             >
               {article.title}
@@ -532,11 +611,11 @@ function NewsCarousel() {
               className="block absolute text-neutral-500"
               style={{
                 fontFamily: "'Instrument Sans', sans-serif",
-                fontSize: 'clamp(14px, 0.9vw, 18px)',
+                fontSize: "clamp(14px, 0.9vw, 18px)",
                 fontWeight: 400,
-                lineHeight: '140%',
-                bottom: 'clamp(25px, 2vw, 35px)',
-                left: 'clamp(25px, 2vw, 35px)',
+                lineHeight: "140%",
+                bottom: "clamp(25px, 2vw, 35px)",
+                left: "clamp(25px, 2vw, 35px)",
               }}
             >
               {article.date}
@@ -546,14 +625,15 @@ function NewsCarousel() {
             <span
               className="absolute"
               style={{
-                bottom: 'clamp(25px, 2vw, 35px)',
-                right: 'clamp(25px, 2vw, 35px)',
-                width: 'clamp(45px, 3.5vw, 58px)',
-                height: 'clamp(45px, 3.5vw, 58px)',
-                backgroundImage: "url('https://www.omc.com/wp-content/uploads/2026/03/arrow_news2.png')",
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
+                bottom: "clamp(25px, 2vw, 35px)",
+                right: "clamp(25px, 2vw, 35px)",
+                width: "clamp(45px, 3.5vw, 58px)",
+                height: "clamp(45px, 3.5vw, 58px)",
+                backgroundImage:
+                  "url('https://www.omc.com/wp-content/uploads/2026/03/arrow_news2.png')",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
               }}
             />
           </a>
@@ -569,26 +649,77 @@ function NewsCarousel() {
             className="cursor-pointer bg-transparent border-none p-0 rotate-180 transition-opacity hover:opacity-60"
             aria-label="Previous"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <rect x="31.8198" width="45" height="45" rx="22.5" transform="rotate(45 31.8198 0)" fill="white" />
-              <path d="M24.1219 32.3334H40.545" stroke="black" strokeWidth="2.17742" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M32.3335 24.1218L40.545 32.3334L32.3335 40.545" stroke="black" strokeWidth="2.17742" strokeLinecap="round" strokeLinejoin="round" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+              fill="none"
+            >
+              <rect
+                x="31.8198"
+                width="45"
+                height="45"
+                rx="22.5"
+                transform="rotate(45 31.8198 0)"
+                fill="white"
+              />
+              <path
+                d="M24.1219 32.3334H40.545"
+                stroke="black"
+                strokeWidth="2.17742"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M32.3335 24.1218L40.545 32.3334L32.3335 40.545"
+                stroke="black"
+                strokeWidth="2.17742"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
           {/* Next Arrow */}
           <button
-            onClick={() => scrollToIndex(Math.min(articles.length - 1, activeIndex + 1))}
+            onClick={() =>
+              scrollToIndex(Math.min(articles.length - 1, activeIndex + 1))
+            }
             className="cursor-pointer bg-transparent border-none p-0 transition-opacity hover:opacity-60"
             aria-label="Next"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <rect x="31.8198" width="45" height="45" rx="22.5" transform="rotate(45 31.8198 0)" fill="white" />
-              <path d="M24.1219 32.3334H40.545" stroke="black" strokeWidth="2.17742" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M32.3335 24.1218L40.545 32.3334L32.3335 40.545" stroke="black" strokeWidth="2.17742" strokeLinecap="round" strokeLinejoin="round" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+              fill="none"
+            >
+              <rect
+                x="31.8198"
+                width="45"
+                height="45"
+                rx="22.5"
+                transform="rotate(45 31.8198 0)"
+                fill="white"
+              />
+              <path
+                d="M24.1219 32.3334H40.545"
+                stroke="black"
+                strokeWidth="2.17742"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M32.3335 24.1218L40.545 32.3334L32.3335 40.545"
+                stroke="black"
+                strokeWidth="2.17742"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         </div>
-
       </div>
     </div>
   );
@@ -600,11 +731,11 @@ export default function CapacidadesPage() {
   const capabilities = t.raw("connectedCapabilities.items") as string[];
 
   useEffect(() => {
-    const mql = window.matchMedia('(max-width: 1023px)');
+    const mql = window.matchMedia("(max-width: 1023px)");
     setIsMobile(mql.matches);
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mql.addEventListener('change', handler);
-    return () => mql.removeEventListener('change', handler);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
   }, []);
 
   return (
@@ -620,6 +751,9 @@ export default function CapacidadesPage() {
           --investors-lottie-x: -10%;
           --investors-lottie-y: -8%;
           --investors-lottie-mt: calc(-25vw - 5px);
+          --lottie-blur: 8px;
+          --blur-clear: 30%;
+          --blur-fade: 70%;
         }
 
         /* Tablet (md) */
@@ -630,6 +764,9 @@ export default function CapacidadesPage() {
             --orbit-font-size: clamp(1.2rem, 2.5vw, 1.8rem);
             --orbit-lottie-scale: 1.6;
             --investors-lottie-scale: 0.7;
+            --lottie-blur: 6px;
+            --blur-clear: 25%;
+            --blur-fade: 65%;
           }
         }
 
@@ -656,6 +793,9 @@ export default function CapacidadesPage() {
             --orbit-circle-size: clamp(160px, 35vw, 240px);
             --orbit-font-size: clamp(1rem, 4vw, 1.4rem);
             --investors-lottie-scale: 1;
+            --lottie-blur: 5px;
+            --blur-clear: 20%;
+            --blur-fade: 55%;
           }
           .investors-section {
             min-height: 100vh !important;
@@ -673,6 +813,9 @@ export default function CapacidadesPage() {
             --orbit-radius: clamp(160px, 50vw, 220px);
             --orbit-circle-size: clamp(140px, 45vw, 180px);
             --orbit-font-size: clamp(14px, 5vw, 18px);
+            --lottie-blur: 4px;
+            --blur-clear: 15%;
+            --blur-fade: 50%;
           }
           .investors-section {
             min-height: 100vh !important;
@@ -683,30 +826,23 @@ export default function CapacidadesPage() {
       `}</style>
       <IntroAnimation />
       <div className="w-full bg-white text-black min-h-screen flex flex-col relative">
-
         {/* Lottie Animation Background */}
-        <div className="absolute top-0 -right-1/4 sm:-right-1/6 w-full md:w-full h-screen pointer-events-none flex items-center justify-center z-10 translate-x-[25%] translate-y-[15%] sm:translate-x-[50%] sm:translate-y-[15%] md:-translate-x-[19%] md:translate-y-[15%] lg:translate-x-[15%] lg:translate-y-[0%] xl:translate-y-[15%]">
+        <div
+          className="absolute top-0 -right-1/4 sm:-right-1/6 w-full md:w-full h-screen pointer-events-none flex items-center justify-center z-10 translate-x-[25%] translate-y-[15%] sm:translate-x-[50%] sm:translate-y-[15%] md:-translate-x-[19%] md:translate-y-[15%] lg:translate-x-[15%] lg:translate-y-[0%] xl:translate-y-[15%]"
+          style={{
+            filter: 'blur(var(--lottie-blur, 8px))',
+          }}
+        >
           <Lottie
             animationData={topSectionAnimation}
             loop={true}
             autoplay={true}
             className="w-full h-full object-cover scale-150 sm:scale-[180%] md:scale-[135%] lg:scale-[100%]"
           />
-          {/* Selective Blur Overlay - Focus for marketing/sales text */}
-          <div
-            className="absolute inset-x-0 z-10 -left-[25%] w-[125%] -top-[25%] h-[120%] sm:-left-[40%] sm:w-[180%] sm:-top-[40%] sm:h-[140%] md:-left-[55%] md:w-[210%] md:-top-[55%] md:h-[160%] lg:-left-[20%] lg:w-[240%] lg:-top-[20%] lg:h-[180%]"
-            style={{
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              maskImage: 'linear-gradient(to right, black 0%, black 20%, transparent 75%)',
-              WebkitMaskImage: 'linear-gradient(to right, black 0%, black 20%, transparent 75%)',
-            }}
-          ></div>
         </div>
 
         {/* Main Content Area */}
         <section className="flex flex-col justify-center  w-full min-h-screen lg:h-screen px-6 sm:px-10 md:px-16 lg:px-28 xl:px-56 md:pt-28 xl:pt-32 2xl:pe-0 2xl:ps-40 relative z-20">
-
           {/* Left Column: Title */}
           <div className=" h-full flex flex-col justify-center">
             <strong className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] font-black tracking-tighter mb-2 leading-none font-[‘Arial_Black’,sans-serif] 2xl:text-6xl">
@@ -714,10 +850,16 @@ export default function CapacidadesPage() {
             </strong>
             <p className="text-5xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-8xl font-light tracking-[clamp(-1.32px,-0.11vw,-1.835px)] mb-4 md:mb-6 xl:mb-8 2xl:text-7xl w-10/12 md:w-full font-sans">
               {t("hero.before")}
-              <span className="font-[‘Cormorant_Garamond’,serif] italic font-semibold text-5xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-8xl 2xl:text-7xl"> {t("hero.highlight1")} </span>
+              <span className="font-[‘Cormorant_Garamond’,serif] italic font-semibold text-5xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-8xl 2xl:text-7xl">
+                {" "}
+                {t("hero.highlight1")}{" "}
+              </span>
               <br className="hidden md:block" />
               {t("hero.middle")}
-              <span className="font-[‘Cormorant_Garamond’,serif] italic font-semibold text-5xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-8xl 2xl:text-7xl"> {t("hero.highlight2")} </span>
+              <span className="font-[‘Cormorant_Garamond’,serif] italic font-semibold text-5xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-8xl 2xl:text-7xl">
+                {" "}
+                {t("hero.highlight2")}{" "}
+              </span>
               {t("hero.after")}
             </p>
 
@@ -732,7 +874,6 @@ export default function CapacidadesPage() {
           </div>
         </section>
         <section className="w-full min-h-screen pr-6 sm:pr-10 md:pr-24 lg:pr-0 py-20 sm:py-28 md:py-36 lg:py-44 xl:py-52 relative z-20 flex flex-col-reverse lg:grid lg:grid-cols-2 gap-44 lg:gap-12 xl:gap-16 items-center overflow-visible">
-
           {/* Left Column (Bottom on Mobile): Animation */}
           <div className="w-full h-full flex items-center justify-center relative min-h-[350px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px] md:translate-x-[8%] lg:-translate-x-[38%] xl:-translate-x-[42%] z-10 pointer-events-auto">
             <OrbitAnimation items={capabilities} isMobile={isMobile} />
@@ -740,7 +881,6 @@ export default function CapacidadesPage() {
 
           {/* Right Column: Text Content Replicating Omnicom */}
           <div className="w-full flex flex-col items-start justify-center gap-4 md:gap-6 relative z-20 pl-6 sm:pl-10 md:pl-16 lg:pl-[15%] lg:max-w-[80%]">
-
             {/* Label Wrapper (Pill)  */}
             <div className="relative inline-flex items-center justify-start z-10 gap-2 px-4 py-2 mb-2 pr-16 md:pr-24">
               {/* Contenedor de fondo con blur en los bordes */}
@@ -763,15 +903,30 @@ export default function CapacidadesPage() {
             </p>
 
             {/* Button Wrapper */}
-            <a href="#" className="flex items-start mt-7 cursor-pointer group no-underline">
+            <a
+              href="#"
+              className="flex items-start mt-7 cursor-pointer group no-underline"
+            >
               <div className="bg-[#1b1b1b] rounded-full px-7 py-5 flex items-center justify-center transition-colors group-hover:bg-black">
                 <span className="font-semibold text-white tracking-wide text-center leading-snug text-lg whitespace-pre-line">
-                  {t("connectedCapabilities.buttonText")}</span>
+                  {t("connectedCapabilities.buttonText")}
+                </span>
               </div>
               <div className="bg-[#1b1b1b] rounded-full h-12 w-12 self-start flex items-center justify-center p-1 relative -translate-x-1 transition-colors group-hover:bg-black">
                 {/* Arrow Icon Placeholder */}
-                <svg className="w-5 h-5 text-white -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                <svg
+                  className="w-5 h-5 text-white -rotate-45"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
                 </svg>
               </div>
             </a>
@@ -784,13 +939,12 @@ export default function CapacidadesPage() {
         <section
           className="w-full min-h-screen pl-6 md:pt-40 sm:pl-10 md:pl-10 lg:pl-32 pr-0 relative z-0 omni-section"
           style={{
-            paddingBottom: '12.375rem',
+            paddingBottom: "12.375rem",
             background: `linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.00) 92.59%), url('https://www.omc.com/wp-content/uploads/2025/11/lines-medium.jpg') lightgray -0.295rem 0 / 114.822% 100% no-repeat`,
-            backgroundSize: 'cover',
+            backgroundSize: "cover",
           }}
         >
           <div className="flex flex-col gap-6">
-
             {/* Label Wrapper (Pill) */}
             <div className="relative inline-flex items-center justify-start z-10 gap-2 px-4 py-2 mb-2 pr-16 md:pr-24 w-fit">
               <div className="absolute inset-0 bg-gradient-to-r from-gray-300/90 via-gray-300/60 to-transparent rounded-full blur-[3px] -z-10"></div>
@@ -828,13 +982,13 @@ export default function CapacidadesPage() {
         <section
           className="w-full px-6 sm:px-10 md:px-[10px] md:pt-[50px] md:pb-[10px] lg:pt-[70px] lg:px-30 xl:ps-56 xl:px-0 xl:pe-24 pt-40 pb-60 relative z-0 text-white overflow-visible flex items-start justify-center investors-section"
           style={{
-            background: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 15%, rgba(0,0,0,0) 40%), url('https://www.omc.com/wp-content/uploads/2025/11/investors_bg.jpg') no-repeat center center / cover",
-            backgroundColor: '#000',
-            minHeight: '100vh',
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 15%, rgba(0,0,0,0) 40%), url('https://www.omc.com/wp-content/uploads/2025/11/investors_bg.jpg') no-repeat center center / cover",
+            backgroundColor: "#000",
+            minHeight: "100vh",
           }}
         >
           <div className="flex flex-col gap-6 w-full max-w-full">
-
             {/* Label Wrapper (Pill) */}
             <div className="relative inline-flex items-center justify-start z-10 gap-2 px-4 py-3 mb-2 pr-16 md:pr-24 w-fit -mt-[5px]">
               <div className="absolute inset-x-0 inset-y-1 bg-gradient-to-r from-white/60 via-white/30 to-transparent rounded-full blur-[10px] -z-10"></div>
@@ -860,14 +1014,31 @@ export default function CapacidadesPage() {
                 </p>
 
                 {/* Button */}
-                <a href="https://investor.omc.com/" target="_blank" rel="noopener noreferrer" className="flex items-start mt-30 sm:mt-4 cursor-pointer group no-underline w-fit">
+                <a
+                  href="https://investor.omc.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start mt-30 sm:mt-4 cursor-pointer group no-underline w-fit"
+                >
                   <div className="bg-[#9333EA] rounded-full px-7 py-5 flex items-center justify-center transition-colors group-hover:bg-[#A855F7]">
                     <span className="font-semibold text-white tracking-wide text-center leading-snug text-lg">
-                      {t("investors.buttonText")}</span>
+                      {t("investors.buttonText")}
+                    </span>
                   </div>
                   <div className="bg-[#9333EA] rounded-full h-12 w-12 self-start flex items-center justify-center p-1 relative -translate-x-1 transition-colors group-hover:bg-[#A855F7]">
-                    <svg className="w-5 h-5 text-white -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    <svg
+                      className="w-5 h-5 text-white -rotate-45"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
                     </svg>
                   </div>
                 </a>
@@ -879,14 +1050,24 @@ export default function CapacidadesPage() {
         {/* ========================================
              INVESTORS LOTTIE - Straddles sections 04 & 05
              ======================================== */}
-        <div className="relative z-10 flex justify-start pointer-events-none" style={{ marginTop: 'var(--investors-lottie-mt, calc(-25vw - 5px))', marginBottom: '-19vw' }}>
-          <div className="relative overflow-visible" style={{
-            width: 'clamp(500px, 40vw, 900px)',
-            transform: isMobile
-              ? `translateX(-35%) translateY(-11%) scale(var(--investors-lottie-scale, 1))`
-              : `translateX(var(--investors-lottie-x, -10%)) translateY(var(--investors-lottie-y, -8%)) scale(var(--investors-lottie-scale, 1))`,
-            filter: 'invert(24%) sepia(95%) saturate(5000%) hue-rotate(265deg) brightness(90%) contrast(95%)'
-          }}>
+        <div
+          className="relative z-10 flex justify-start pointer-events-none"
+          style={{
+            marginTop: "var(--investors-lottie-mt, calc(-25vw - 5px))",
+            marginBottom: "-19vw",
+          }}
+        >
+          <div
+            className="relative overflow-visible"
+            style={{
+              width: "clamp(500px, 40vw, 900px)",
+              transform: isMobile
+                ? `translateX(-35%) translateY(-11%) scale(var(--investors-lottie-scale, 1))`
+                : `translateX(var(--investors-lottie-x, -10%)) translateY(var(--investors-lottie-y, -8%)) scale(var(--investors-lottie-scale, 1))`,
+              filter:
+                "invert(24%) sepia(95%) saturate(5000%) hue-rotate(265deg) brightness(90%) contrast(95%)",
+            }}
+          >
             <Lottie animationData={investorsLottie} loop={true} />
           </div>
         </div>
@@ -897,50 +1078,67 @@ export default function CapacidadesPage() {
         <section
           className="w-full pt-0 -mt-9 sm:-mt-24 md:-mt-7 md:px-10 lg:px-10 lg:mt-10 2xl:mt-60 relative z-10"
           style={{
-            background: 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, #EBEAEA 100%)',
-            paddingBottom: '6rem',
+            background:
+              "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, #EBEAEA 100%)",
+            paddingBottom: "6rem",
           }}
         >
           {/* Blur Overlay - Above Lottie (z-10), Below Content (z-30) */}
           <div
             className="absolute inset-x-0 top-0 z-20 pointer-events-none sm:-top-[120px]"
             style={{
-              height: '35vw',
-              backdropFilter: 'blur(18px)',
-              WebkitBackdropFilter: 'blur(18px)',
-              maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%), linear-gradient(to right, black 0%, transparent 80%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%), linear-gradient(to right, black 0%, transparent 80%)',
-              WebkitMaskComposite: 'source-in',
-              maskComposite: 'intersect',
+              height: "35vw",
+              backdropFilter: "blur(18px)",
+              WebkitBackdropFilter: "blur(18px)",
+              maskImage:
+                "linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%), linear-gradient(to right, black 0%, transparent 80%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%), linear-gradient(to right, black 0%, transparent 80%)",
+              WebkitMaskComposite: "source-in",
+              maskComposite: "intersect",
             }}
           ></div>
           <div className="flex flex-col gap-12 relative z-30">
-
             {/* Header: Title + View All */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-10 px-6 sm:px-10 md:px-4 lg:px-5 xl:px-56 2xl:pe-0 2xl:ps-40">
               <h4
                 className="m-0 text-black font-black leading-none relative z-30"
                 style={{
                   fontFamily: "'Instrument Sans', sans-serif",
-                  fontSize: 'clamp(30px, 3vw, 46px)',
-                  letterSpacing: 'clamp(-0.6px, -0.06em, -0.92px)',
+                  fontSize: "clamp(30px, 3vw, 46px)",
+                  letterSpacing: "clamp(-0.6px, -0.06em, -0.92px)",
                   fontWeight: 550,
-                  width: 'clamp(200px, 40vw, 550px)',
+                  width: "clamp(200px, 40vw, 550px)",
                 }}
               >
                 {t("whatsNew.title")}
               </h4>
 
               {/* Button Wrapper */}
-              <a href="#" className="flex items-start mt-7 cursor-pointer group no-underline">
+              <a
+                href="#"
+                className="flex items-start mt-7 cursor-pointer group no-underline"
+              >
                 <div className="bg-[#1b1b1b] rounded-full px-7 py-5 flex items-center justify-center transition-colors group-hover:bg-black">
                   <span className="font-semibold text-white tracking-wide text-center leading-snug text-lg">
-                    {t("whatsNew.viewAll")}</span>
+                    {t("whatsNew.viewAll")}
+                  </span>
                 </div>
                 <div className="bg-[#1b1b1b] rounded-full h-12 w-12 self-start flex items-center justify-center p-1 relative -translate-x-1 transition-colors group-hover:bg-black">
                   {/* Arrow Icon Placeholder */}
-                  <svg className="w-5 h-5 text-white -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  <svg
+                    className="w-5 h-5 text-white -rotate-45"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
                   </svg>
                 </div>
               </a>
@@ -950,7 +1148,6 @@ export default function CapacidadesPage() {
             <NewsCarousel />
           </div>
         </section>
-
       </div>
     </main>
   );
