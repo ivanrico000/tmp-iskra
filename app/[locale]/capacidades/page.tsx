@@ -2,28 +2,38 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-type AnimationPhase = 'video' | 'fade-out' | 'complete';
+type AnimationPhase = 'pending' | 'video' | 'fade-out' | 'complete';
 
 function IntroAnimation() {
-  const [phase, setPhase] = useState<AnimationPhase>('video');
+  const [phase, setPhase] = useState<AnimationPhase>('pending');
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (localStorage.getItem('introSeen')) {
+    if (sessionStorage.getItem('introSeen')) {
       setPhase('complete');
       return;
     }
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setPhase('complete');
-      localStorage.setItem('introSeen', '1');
+      sessionStorage.setItem('introSeen', '1');
+      return;
     }
+    setPhase('video');
   }, []);
 
+  useEffect(() => {
+    if (phase === 'video' && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, [phase]);
+
   const handleEnded = useCallback(() => {
-    localStorage.setItem('introSeen', '1');
+    sessionStorage.setItem('introSeen', '1');
     setPhase('fade-out');
   }, []);
 
-  const handleFadeOutEnd = useCallback(() => {
+  const handleFadeOutEnd = useCallback((e: React.TransitionEvent<HTMLDivElement>) => {
+    if (e.target !== e.currentTarget) return;
     if (phase === 'fade-out') setPhase('complete');
   }, [phase]);
 
@@ -32,20 +42,21 @@ function IntroAnimation() {
   return (
     <div
       aria-hidden="true"
-      onTransitionEnd={handleFadeOutEnd}
-      className={`fixed inset-0 z-9999 bg-black flex items-center justify-center transition-transform duration-700 ease-in-out ${phase === 'fade-out' ? '-translate-y-full' : 'translate-y-0'}`}
+      onTransitionEnd={phase === 'fade-out' ? handleFadeOutEnd : undefined}
+      className={`fixed inset-0 z-9999 bg-black flex items-center justify-center ${phase === 'fade-out' ? 'transition-transform duration-700 ease-in-out -translate-y-full' : ''}`}
     >
-      <video
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        onEnded={handleEnded}
-        className="absolute w-full h-full object-cover"
-      >
-        <source src="/videos/Logo-Iskra.webm" type="video/webm" />
-        <source src="/videos/intro.mp4" type="video/mp4" />
+      {phase !== 'pending' && (
+        <video
+          ref={videoRef}
+          muted
+          playsInline
+          preload="auto"
+          onEnded={handleEnded}
+          className="absolute w-full h-full object-cover"
+        >
+        <source src="/videos/logo.webm" type="video/webm" />
       </video>
+      )}
     </div>
   );
 }
@@ -62,9 +73,9 @@ const OMNI_ICONS = [
 import { motion, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
-import topSectionAnimation from '../../../public/02-Home-top-section.json';
-import orangeCircleLottie from './circleLottie.json';
-import investorsLottie from './investorsLottie.json';
+import topSectionAnimation from '../../../public/animaciones/initial.json';
+import orangeCircleLottie from '../../../public/animaciones/circle.json';
+import investorsLottie from '../../../public/animaciones/investors.json';
 
 // Lottie necesita cargarse dinámicamente en Next.js para evitar errores de Client-Side mismatch o problemas con el objeto window
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
@@ -884,7 +895,7 @@ export default function CapacidadesPage() {
              SECTION 05 - WHAT'S NEW
              ======================================== */}
         <section
-          className="w-full px-6 pt-0 -mt-9 sm:-mt-24 md:-mt-7 md:px-10 lg:px-10 lg:mt-10 xl:px-96 2xl:px-40 2xl:mt-60 relative z-10"
+          className="w-full pt-0 -mt-9 sm:-mt-24 md:-mt-7 md:px-10 lg:px-10 lg:mt-10 2xl:mt-60 relative z-10"
           style={{
             background: 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 20%, #EBEAEA 100%)',
             paddingBottom: '6rem',
@@ -906,7 +917,7 @@ export default function CapacidadesPage() {
           <div className="flex flex-col gap-12 relative z-30">
 
             {/* Header: Title + View All */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-10">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-10 px-6 sm:px-10 md:px-4 lg:px-5 xl:px-56 2xl:pe-0 2xl:ps-40">
               <h4
                 className="m-0 text-black font-black leading-none relative z-30"
                 style={{
